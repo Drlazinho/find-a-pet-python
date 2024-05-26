@@ -7,7 +7,7 @@ from src.views.http_types.http_request import HttpRequest
 
 pet_route_bp = Blueprint("pet_routes", __name__)
 
-@pet_route_bp.route("/pets", methods=['GET'])
+@pet_route_bp.route("/api/pets", methods=['GET'])
 def list_pets():
     try:
         http_request = HttpRequest()
@@ -19,7 +19,7 @@ def list_pets():
         http_response = handle_errors(exception)
         return jsonify(http_response.body), http_response.status_code
 
-@pet_route_bp.route("/pets/<name>", methods=['DELETE'])
+@pet_route_bp.route("/api/pets/<name>", methods=['DELETE'])
 def delete_pet(name):
     try:
         http_request = HttpRequest(param={"name": name})

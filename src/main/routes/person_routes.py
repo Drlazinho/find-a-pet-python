@@ -8,7 +8,7 @@ from src.errors.error_handler import handle_errors
 
 person_route_bp = Blueprint("person_routes", __name__)
 
-@person_route_bp.route("/people", methods=['POST'])
+@person_route_bp.route("/api/people", methods=['POST'])
 def create_person():
     try:
         http_request = HttpRequest(body=request.json)
@@ -21,7 +21,7 @@ def create_person():
         return jsonify(http_response.body), http_response.status_code
 
 
-@person_route_bp.route("/people/<person_id>", methods=['GET'])
+@person_route_bp.route("/api/people/<person_id>", methods=['GET'])
 def find_person(person_id):
     try:
         http_request = HttpRequest(param={ "person_id" : person_id})
